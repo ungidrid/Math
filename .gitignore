@@ -1,6 +1,7 @@
 *.exe
 /Debug
 /.vs
+/MathC++/.vs
 /MathC++/Debug
 /.git
 /MathC++/MathC++/Debug
