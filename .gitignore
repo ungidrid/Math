@@ -1,5 +1,9 @@
 *.exe
 /Debug
+<<<<<<< HEAD
+=======
+/.vs
+>>>>>>> ungidrid
 /MathC++/.vs
 /MathC++/Debug
 /.git
