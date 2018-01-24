@@ -1,6 +1,6 @@
 *.exe
 /Debug
-/.vs
+/MathC++/.vs
 /MathC++/Debug
 /.git
 /MathC++/MathC++/Debug
@@ -8,3 +8,4 @@
 /MathC++/MathC++/stdafx.cpp
 /MathC++/MathC++/targetver.h
 /MathC++/MathC++.sln
+/MathC++/.vs

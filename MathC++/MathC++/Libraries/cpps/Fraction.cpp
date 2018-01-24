@@ -31,40 +31,41 @@ Fraction Fraction::operator-() {
 Fraction Fraction::operator+() {
 	return *this; 
 }
-Fraction Fraction::operator+(const Fraction& f2) {
-	return Fraction(m_numerator*f2.m_denominator + m_denominator * f2.m_numerator, m_denominator*f2.m_denominator);
-}
-Fraction Fraction::operator-(const Fraction& f2) {
-	return Fraction(m_numerator*f2.m_denominator - m_denominator * f2.m_numerator, m_denominator*f2.m_denominator);
-}
-Fraction Fraction::operator*(const Fraction& f2){
-	return Fraction(m_numerator*f2.m_numerator, m_denominator*f2.m_denominator);
-}
-Fraction Fraction::operator/(const Fraction& f2){
-	assert(f2.m_numerator != 0 && "Division by 0");
-	return Fraction(m_numerator*f2.m_denominator, m_denominator*f2.m_numerator);
-}
 Fraction& Fraction::operator+=(const Fraction& f2) {
-	*this = *this + f2; 
-	return *this; 
+	*this = *this + f2;
+	return *this;
 }
-Fraction& Fraction::operator-=(const Fraction& f2) { 
-	*this = *this - f2; 
-	return *this; 
+Fraction& Fraction::operator-=(const Fraction& f2) {
+	*this = *this - f2;
+	return *this;
 }
-Fraction& Fraction::operator*=(const Fraction& f2) { 
-	*this = *this * f2; 
-	return *this; 
+Fraction& Fraction::operator*=(const Fraction& f2) {
+	*this = *this * f2;
+	return *this;
 }
-Fraction& Fraction::operator/=(const Fraction& f2) { 
-	*this = *this / f2; 
-	return *this; 
+Fraction& Fraction::operator/=(const Fraction& f2) {
+	*this = *this / f2;
+	return *this;
 }
-bool Fraction::operator==(const Fraction& f2) {
-	return (m_numerator*f2.m_denominator == m_denominator * f2.m_numerator);
+
+Fraction operator+(const Fraction& f1, const Fraction& f2) {
+	return Fraction(f1.m_numerator*f2.m_denominator + f1.m_denominator * f2.m_numerator, f1.m_denominator*f2.m_denominator);
 }
-bool Fraction::operator!=(const Fraction& f2) {
-	return !Fraction::operator==(f2);
+Fraction operator-(const Fraction& f1, const Fraction& f2) {
+	return Fraction(f1.m_numerator*f2.m_denominator - f1.m_denominator * f2.m_numerator, f1.m_denominator*f2.m_denominator);
+}
+Fraction operator*(const Fraction& f1, const Fraction& f2){
+	return Fraction(f1.m_numerator*f2.m_numerator, f1.m_denominator*f2.m_denominator);
+}
+Fraction operator/(const Fraction& f1, const Fraction& f2){
+	assert(f2.m_numerator != 0 && "Division by 0");
+	return Fraction(f1.m_numerator*f2.m_denominator, f1.m_denominator*f2.m_numerator);
+}
+bool operator==(const Fraction& f1, const Fraction& f2) {
+	return (f1.m_numerator*f2.m_denominator == f1.m_denominator * f2.m_numerator);
+}
+bool operator!=(const Fraction& f1, const Fraction& f2) {
+	return !(f1==f2);
 }
 
 ostream& operator<<(ostream& out, const Fraction& f) {
