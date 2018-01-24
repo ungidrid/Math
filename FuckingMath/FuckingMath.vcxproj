@@ -115,6 +115,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Complex.cpp" />
+    <ClCompile Include="Fraction.cpp" />
+    <ClCompile Include="LinearEquation.cpp" />
+    <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="Source.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Libraries\Complex.h" />
+    <ClInclude Include="Libraries\Fraction.h" />
+    <ClInclude Include="Libraries\LinearEquation.h" />
+    <ClInclude Include="Libraries\Matrix.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
