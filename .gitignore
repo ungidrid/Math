@@ -1,4 +1,10 @@
 *.exe
 /Debug
 /.vs
-/FuckingMath/Debug
+/MathC++/Debug
+/.git
+/MathC++/MathC++/Debug
+/MathC++/MathC++/stdafx.h
+/MathC++/MathC++/stdafx.cpp
+/MathC++/MathC++/targetver.h
+/MathC++/MathC++.sln
