@@ -15,17 +15,17 @@ public:
 	double toDouble();
 	Fraction operator-();
 	Fraction operator+();
-	Fraction operator+(const Fraction&);
-	Fraction operator-(const Fraction&);
-	Fraction operator*(const Fraction&);
-	Fraction operator/(const Fraction&);
 	Fraction& operator+=(const Fraction&);
 	Fraction& operator-=(const Fraction&);
 	Fraction& operator*=(const Fraction&);
 	Fraction& operator/=(const Fraction&);
-	bool operator==(const Fraction&);
-	bool operator!=(const Fraction&);
 
+	friend Fraction operator+(const Fraction&, const Fraction&);
+	friend Fraction operator-(const Fraction&, const Fraction&);
+	friend Fraction operator*(const Fraction&, const Fraction&);
+	friend Fraction operator/(const Fraction&, const Fraction&);
+	friend bool operator==(const Fraction&, const Fraction&);
+	friend bool operator!=(const Fraction&, const Fraction&);
 
 	friend ostream& operator<<(ostream&, const Fraction&);
 	friend istream& operator>>(istream&, Fraction&);
