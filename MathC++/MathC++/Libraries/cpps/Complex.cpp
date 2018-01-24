@@ -2,8 +2,8 @@
 
 //CONSTRUCTORS
 Complex::Complex(Fraction real = 0, Fraction imaginarious = 0) {
-	this->m_real = real;
-	this->m_imaginarious = imaginarious;
+	m_real = real;
+	m_imaginarious = imaginarious;
 }
 
 Fraction& Complex::Re() {

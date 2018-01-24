@@ -5,7 +5,7 @@ class Complex{
 	Fraction m_real;
 	Fraction m_imaginarious;
 public:
-	Complex(Fraction, Fraction);
+	Complex(Fraction = 0, Fraction = 0);
 	Fraction& Re();
 	Fraction& Im();
 	Fraction squaredAbs();

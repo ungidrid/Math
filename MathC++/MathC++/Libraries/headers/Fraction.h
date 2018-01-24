@@ -11,7 +11,7 @@ class Fraction{
 	static int gcd(int a, int b);
 	void reduce();
 public:
-	Fraction(int, int);
+	Fraction(int = 0, int = 1);
 	double toDouble();
 	Fraction operator-();
 	Fraction operator+();
