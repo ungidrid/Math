@@ -33,5 +33,5 @@ public:
 	friend bool operator!=(const Matrix&, const Matrix&);
 
 	//REDO
-	friend ostream& operator<<(ostream&, Matrix);
+	friend ostream& operator<<(ostream&,const Matrix&);
 };

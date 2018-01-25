@@ -89,9 +89,10 @@ const LinearEquation& Matrix::operator[](size_t index) const {
 	return vect[index];
 }
 Matrix operator*(const Matrix& left, const Fraction& right) {
+	Matrix m{ left };
 	for (size_t i = 0; i < left.size(); ++i)
 		for (size_t j = 0; j < left.vect[0].getEquation().size(); ++j)
-			left[i][j] *= right;
+			m[i][j] *= right;
 	return left;
 }
 Matrix operator*(const Fraction& left, const Matrix& right) {
