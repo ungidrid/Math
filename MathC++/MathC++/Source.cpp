@@ -1,10 +1,14 @@
 #include "stdafx.h"
 #include "Libraries\headers\LinearEquation.h"
-#include "Libraries\cpps\LinearEquation.cpp"
 
 int main()
 {
-	LinearEquation<Fraction> LE{ Fraction(1,2),Fraction(2,3),3 };
-	(3*LE).printEquation();
-	system("PAUSE");
+	Complex c(3, 5), q(4,4);
+	cout << "c + q == " << c + q << '\n';
+	cout << "c * q == " << c * q << '\n';
+	cout << "c - q == " << c - q << '\n';
+	cout << "c / q == " << c / q << '\n';
+	cout << "~c == " << c.conjugate() << '\n';
+	cout << "|c|^2 == " << c.squaredAbs() << '\n';
+	cout << ""
 }

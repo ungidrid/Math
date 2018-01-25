@@ -54,7 +54,6 @@ Complex operator/(const Complex& left, const Complex& right){
 	return c;
 }
 
-//TEST IT
 ostream& operator<<(ostream& out, const Complex& c) {
 	return c.print(out);
 }

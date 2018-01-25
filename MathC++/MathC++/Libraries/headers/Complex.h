@@ -13,14 +13,13 @@ public:
 	const Fraction& Re() const;
 	const Fraction& Im() const;
 	Fraction squaredAbs() const;
-	Complex conjugate() const;	//REDO? Change itself, not copy?
+	Complex conjugate() const;	
 	Complex operator+() const;
-	Complex operator-() const;	//REDO? Change itself, not copy?
+	Complex operator-() const;	
 	friend Complex operator+(const Complex&, const Complex&);
 	friend Complex operator-(const Complex&, const Complex&);
 	friend Complex operator*(const Complex&, const Complex&);
 	friend Complex operator/(const Complex&, const Complex&);
-
 
 	friend ostream& operator<<(ostream&, const Complex&);
 	friend istream& operator>>(istream&, Complex&);

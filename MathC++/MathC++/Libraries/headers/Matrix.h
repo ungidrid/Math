@@ -12,7 +12,7 @@ public:
 	static Matrix E(size_t);
 
 	size_t size() const;
-	virtual ostream& print(ostream&) const;	//REDO
+	virtual ostream& print(ostream&) const;	
 	Fraction determinant() const;
 	Matrix transposed() const;
 	Matrix inversed() const;
@@ -32,6 +32,5 @@ public:
 	friend bool operator==(const Matrix&, const Matrix&);
 	friend bool operator!=(const Matrix&, const Matrix&);
 
-	//REDO
 	friend ostream& operator<<(ostream&,const Matrix&);
 };
