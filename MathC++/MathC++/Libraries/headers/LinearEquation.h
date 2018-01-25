@@ -6,20 +6,23 @@ class LinearEquation{
 protected:
 	vector<Fraction> valArray;
 public:
-	LinearEquation(int length);
-	LinearEquation(const vector<Fraction> &vect);
-	LinearEquation(const initializer_list<Fraction>& list);
+	LinearEquation(int);
+	LinearEquation(const vector<Fraction>&);
+	LinearEquation(const initializer_list<Fraction>&);
 
-	vector<Fraction>& getEquation();
+	vector<Fraction>& getEquation(); //getter hybrid must be splited into getter and setter
+	vector<Fraction> getEquation() const; //getter, non-tested
 	void printEquation() const;
 
-	LinearEquation& operator+() { return *this; }
-	LinearEquation& operator-() { for (auto &elem : valArray) { elem = -elem; } return *this; }
-	Fraction& operator[](int index);
+	LinearEquation operator+() const;//constness added, not tested
+	LinearEquation operator-() const;//constness added, not tested
+	Fraction& operator[](int index); //getter hybrid must be splited into getter and setter
+	Fraction operator[](int index) const; //getter, non-tested
 
-	friend LinearEquation operator-(LinearEquation left, LinearEquation right);
-	friend LinearEquation operator+(LinearEquation left, LinearEquation right);
-	friend bool operator==(LinearEquation left, LinearEquation right);
-	friend bool operator!=(LinearEquation left, LinearEquation right);
-	friend LinearEquation operator*(Fraction left, LinearEquation right);
+	friend LinearEquation operator-(const LinearEquation&,const LinearEquation&);//constness added, not tested
+	friend LinearEquation operator+(const LinearEquation&,const LinearEquation&);//constness added, not tested
+	friend bool operator==(const LinearEquation&, const LinearEquation&);//constness added, not tested
+	friend bool operator!=(const LinearEquation&, const LinearEquation&);//constness added, not tested
+	friend LinearEquation operator*(const Fraction&,const LinearEquation&);//constness added, not tested
+	//operator<< could be overloaded too by use of "printEquation" method
 };
