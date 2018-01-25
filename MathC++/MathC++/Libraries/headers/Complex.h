@@ -13,9 +13,9 @@ public:
 	const Fraction& Re() const;
 	const Fraction& Im() const;
 	Fraction squaredAbs() const;
-	Complex conjugate() const;	
-	Complex operator+() const;
-	Complex operator-() const;	
+	Complex conjugate() const;
+	Complex operator+() const;	//TODESTORY
+	Complex operator-() const;
 	friend Complex operator+(const Complex&, const Complex&);
 	friend Complex operator-(const Complex&, const Complex&);
 	friend Complex operator*(const Complex&, const Complex&);

@@ -3,7 +3,6 @@
 //CONSTRUCTORS
 Complex::Complex(const Fraction& real, const Fraction& imaginarious):m_real{real}, m_imaginarious{imaginarious} {}
 
-//TEST IT
 ostream& Complex::print(ostream& out) const {
 	if (Im() == 0) 
 		return out << Re();
@@ -54,6 +53,7 @@ Complex operator/(const Complex& left, const Complex& right){
 	return c;
 }
 
+//TEST IT
 ostream& operator<<(ostream& out, const Complex& c) {
 	return c.print(out);
 }

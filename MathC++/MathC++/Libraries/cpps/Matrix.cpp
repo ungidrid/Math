@@ -16,12 +16,10 @@ Matrix Matrix::E(size_t size){
 size_t Matrix::size() const{ 
 	return vect.size();
 }
-//TEST IT
 ostream& Matrix::print(ostream& out) const{
 	out << '\n';
-	for (const auto &elem : vect){
+	for (const auto &elem : vect)
 		out << elem << '\n';
-	}
 	out << '\n';
 	return out;
 }
@@ -121,11 +119,11 @@ Matrix operator*(const Matrix& left, const Matrix& right) {
 Matrix Matrix::operator+()const {
 	return *this;
 }
-
 Matrix Matrix::operator-() const {
-	for (auto elem : vect)
-		elem = -elem;
-	return *this;
+	Matrix temp{ *this };
+	for (size_t i = 0; i < temp.size(); ++i)
+		temp[i] = -temp[i];
+	return temp;
 }
 bool operator==(const Matrix& left, const Matrix& right) {
 	return left.vect == right.vect;

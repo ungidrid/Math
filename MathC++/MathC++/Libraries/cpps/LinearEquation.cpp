@@ -20,8 +20,8 @@ ostream& LinearEquation::print(ostream& out) const{
 
 //OPERATORS
 LinearEquation operator+(const LinearEquation& left,const LinearEquation& right){
-	LinearEquation eq(left.getEquation().size());
-	for (size_t i = 0; i < left.getEquation().size(); ++i)
+	LinearEquation eq(left.valArray.size());
+	for (size_t i = 0; i < left.valArray.size(); ++i)
 		eq[i] = left[i] + right[i];
 	return eq;
 }
@@ -38,13 +38,13 @@ LinearEquation LinearEquation::operator+() const {
 	return *this;
 }
 LinearEquation LinearEquation::operator-() const {
-	for (auto elem : valArray) 
+	vector<Fraction> temp(valArray);
+	for (auto& elem : temp) 
 		elem = -elem;
-	return *this; 
+	return temp; 
 }
 LinearEquation operator*(const Fraction& left, const LinearEquation& right){
 	LinearEquation eq(right.getEquation().size());
-
 	for (size_t i = 0; i < right.getEquation().size(); ++i)
 		eq[i] = left * right[i]; 
 	return eq;

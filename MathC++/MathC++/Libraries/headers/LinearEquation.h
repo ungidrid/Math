@@ -14,7 +14,7 @@ public:
 	const vector<Fraction>& getEquation() const;
 	ostream& print(ostream&) const;
 
-	LinearEquation operator+() const;
+	LinearEquation operator+() const;//DESTROY THIS FUCKING DEVIL
 	LinearEquation operator-() const;
 	Fraction& operator[](size_t index); 
 	const Fraction& operator[](size_t index) const; 
