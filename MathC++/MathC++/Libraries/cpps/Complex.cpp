@@ -3,6 +3,21 @@
 //CONSTRUCTORS
 Complex::Complex(const Fraction& real = 0, const Fraction& imaginarious = 0):m_real(real), m_imaginarious(imaginarious) {}
 
+//TEST IT
+string Complex::print()const {
+	string out;
+	if (Im() == 0) {
+		out+= Re().print();
+		return out;
+	}
+	if (Re() == 0) {
+		out+= Im().print()+"*i";
+		return out;
+	}
+	out += Re().print() + " + " + Im().print() + "*i ";
+	return out;
+}
+
 Fraction& Complex::Re() {
 	return m_real;
 }
@@ -49,16 +64,9 @@ Complex operator/(const Complex& left, const Complex& right){
 	return c;
 }
 
+//TEST IT
 ostream& operator<<(ostream& out, const Complex& c) {
-	if (c.Im() == 0) { 
-		out << c.Re(); 
-		return out; 
-	}
-	if (c.Re() == 0) {
-		out << c.Im() << "*i"; 
-		return out; 
-	}
-	out << c.Re() << " + " << c.Im() << "*i ";
+	out << c.print();
 	return out;
 }
 istream& operator>>(istream& in, Complex& c) {

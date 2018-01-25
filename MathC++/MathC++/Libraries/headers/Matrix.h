@@ -12,7 +12,7 @@ public:
 	static Matrix E(size_t);
 
 	size_t size()const;
-	virtual void printMatrix() const;	//REDO
+	virtual string print() const;	//REDO
 	Fraction determinant()const;
 	Matrix transposed()const;
 	Matrix inversed()const;

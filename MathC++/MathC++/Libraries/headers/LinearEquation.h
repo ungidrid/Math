@@ -12,7 +12,7 @@ public:
 
 	vector<Fraction>& getEquation();
 	const vector<Fraction>& getEquation() const;
-	void printEquation() const;	//REDO
+	string print() const;
 
 	const LinearEquation& operator+() const;
 	LinearEquation& operator+();

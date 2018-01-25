@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <cassert>
+#include <string>
 using namespace std;
 
 class Fraction{
@@ -12,6 +13,9 @@ class Fraction{
 	void reduce();
 public:
 	Fraction(int = 0, int = 1);
+
+
+	string print()const;
 	double toDouble()const;
 	Fraction operator-()const;
 	Fraction& operator+();

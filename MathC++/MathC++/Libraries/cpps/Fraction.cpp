@@ -1,5 +1,4 @@
 #include "../headers/Fraction.h"
-
 //CONSTRUCTORS
 Fraction::Fraction(int numerator = 0, int denominator = 1) : m_numerator{ numerator }, m_denominator{ denominator } {
 	assert(m_denominator != 0 && "Fraction's denominator cannot be assigned to 0");
@@ -14,6 +13,16 @@ void Fraction::reduce() {
 	int cd = gcd(m_numerator, m_denominator);
 	m_numerator /= cd;
 	m_denominator /= cd;
+}
+
+//TEST IT
+string Fraction::print()const{
+	string result;
+	if (m_denominator != 1)
+		result+= m_numerator + "/" + m_denominator;
+	else
+		result+=m_numerator;
+	return result;
 }
 
 double Fraction::toDouble()const {
@@ -68,10 +77,7 @@ bool operator!=(const Fraction& f1, const Fraction& f2) {
 }
 
 ostream& operator<<(ostream& out, const Fraction& f) {
-	if (f.m_denominator != 1)
-		out << f.m_numerator << "/" << f.m_denominator;
-	else
-		out << f.m_numerator; 
+	out << f.print();
 	return out;
 }
 istream& operator>>(istream& in, Fraction& f) {

@@ -12,9 +12,13 @@ vector<Fraction>& LinearEquation::getEquation() {
 const vector<Fraction>& LinearEquation::getEquation() const{
 	return valArray;
 }
-void LinearEquation::printEquation() const{
+
+//TEST IT
+string LinearEquation::print() const{
+	string temp;
 	for (const auto &elem : valArray)
-		cout << elem << " ";
+		temp+=elem.print()+" ";
+	return temp;
 }
 
 //OPERATORS

@@ -6,6 +6,8 @@ class Complex{
 	Fraction m_imaginarious;
 public:
 	Complex(const Fraction& = 0, const Fraction& = 0);
+
+	string print()const;
 	Fraction& Re();
 	Fraction& Im();
 	const Fraction& Re()const;

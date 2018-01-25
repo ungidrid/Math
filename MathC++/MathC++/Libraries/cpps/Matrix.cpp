@@ -16,14 +16,15 @@ Matrix Matrix::E(size_t size){
 size_t Matrix::size()const { 
 	return vect.size();
 }
-void Matrix::printMatrix() const{
-	cout << '\n';
-	for (const auto &elem : vect)
-	{
-		elem.printEquation();
-		cout << '\n';
+//TEST IT
+string Matrix::print() const{
+	string temp;
+	temp+= '\n';
+	for (const auto &elem : vect){
+		temp+=elem.print() + '\n';
 	}
-	cout << '\n';
+	temp += '\n';
+	return temp;
 }
 Fraction Matrix::determinant()const{
 	if (vect.size() != vect[0].getEquation().size()) { 
@@ -151,8 +152,7 @@ bool operator!=(const Matrix& left, const Matrix& right) {
 	return !(left.vect == right.vect);
 }
 
-//WAT?
 ostream& operator<<(ostream& out, Matrix m) {
-	m.printMatrix();
+	out << m.print();
 	return out;
 }
