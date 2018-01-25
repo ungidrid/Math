@@ -11,6 +11,7 @@ ostream& Complex::print(ostream& out) const {
 	return out << Re() << " + " << Im() <<"*i";
 }
 
+//METHODS
 Fraction& Complex::Re() {
 	return m_real;
 }

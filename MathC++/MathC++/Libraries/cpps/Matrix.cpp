@@ -116,7 +116,7 @@ Matrix operator*(const Matrix& left, const Matrix& right) {
 	return m;
 }
 
-Matrix Matrix::operator+()const {
+Matrix Matrix::operator+() const {
 	return *this;
 }
 Matrix Matrix::operator-() const {

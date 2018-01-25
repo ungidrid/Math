@@ -125,6 +125,7 @@
     <ClCompile Include="Libraries\cpps\Fraction.cpp" />
     <ClCompile Include="Libraries\cpps\LinearEquation.cpp" />
     <ClCompile Include="Libraries\cpps\Matrix.cpp" />
+    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

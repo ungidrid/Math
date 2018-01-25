@@ -26,12 +26,11 @@ public:
 	friend Matrix operator-(const Matrix&, const Matrix&);
 	friend Matrix operator*(const Matrix&, const Matrix&);
 	
-	Matrix operator+() const;	//YOU SHELL NOT LEAVE IT ALIVE!
+	Matrix operator+() const;
 	Matrix operator-() const;
 
 	friend bool operator==(const Matrix&, const Matrix&);
 	friend bool operator!=(const Matrix&, const Matrix&);
 
-	//REDO
 	friend ostream& operator<<(ostream&, const Matrix&);
 };
