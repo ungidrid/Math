@@ -2,27 +2,28 @@
 #include <vector>
 #include "Complex.h"
 
+template<class T>
 class LinearEquation{
 protected:
-	vector<Fraction> valArray;
+	vector<T> valArray;
 public:
 	LinearEquation(int);
-	LinearEquation(const vector<Fraction>&);
-	LinearEquation(const initializer_list<Fraction>&);
+	LinearEquation(const vector<T>&);
+	LinearEquation(const initializer_list<T>&);
 
-	vector<Fraction>& getEquation(); //getter hybrid must be splited into getter and setter
-	vector<Fraction> getEquation() const; //getter, non-tested
+	vector<T>& getEquation(); //getter hybrid must be splited into getter and setter
+	vector<T> getEquation() const; //getter, non-tested
 	void printEquation() const;
 
 	LinearEquation operator+() const;//constness added, not tested
 	LinearEquation operator-() const;//constness added, not tested
-	Fraction& operator[](int index); //getter hybrid must be splited into getter and setter
-	Fraction operator[](int index) const; //getter, non-tested
+	T& operator[](int index); //getter hybrid must be splited into getter and setter
+	T operator[](int index) const; //getter, non-tested
 
 	friend LinearEquation operator-(const LinearEquation&,const LinearEquation&);//constness added, not tested
 	friend LinearEquation operator+(const LinearEquation&,const LinearEquation&);//constness added, not tested
 	friend bool operator==(const LinearEquation&, const LinearEquation&);//constness added, not tested
 	friend bool operator!=(const LinearEquation&, const LinearEquation&);//constness added, not tested
-	friend LinearEquation operator*(const Fraction&,const LinearEquation&);//constness added, not tested
+	friend LinearEquation operator*(const T&,const LinearEquation&);//constness added, not tested
 	//operator<< could be overloaded too by use of "printEquation" method
 };

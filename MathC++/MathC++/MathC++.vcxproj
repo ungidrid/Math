@@ -119,12 +119,14 @@
     <ClInclude Include="Libraries\headers\Fraction.h" />
     <ClInclude Include="Libraries\headers\LinearEquation.h" />
     <ClInclude Include="Libraries\headers\Matrix.h" />
+    <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Libraries\cpps\Complex.cpp" />
     <ClCompile Include="Libraries\cpps\Fraction.cpp" />
     <ClCompile Include="Libraries\cpps\LinearEquation.cpp" />
     <ClCompile Include="Libraries\cpps\Matrix.cpp" />
+    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

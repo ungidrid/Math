@@ -1,6 +1,6 @@
 #include "..\headers\Matrix.h"
 
-
+/*
 //CONSTRUCTORS
 Matrix::Matrix() {}
 Matrix::Matrix(const vector<LinearEquation>& vect) { 
@@ -91,3 +91,4 @@ Matrix Matrix::power(int deg){
 		result = result * m;
 	return result;
 }
+*/

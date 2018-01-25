@@ -5,7 +5,7 @@
 
 
 //CONSTRUCTORS
-Fraction::Fraction(int numerator = 0, int denominator = 1) : m_numerator{ numerator }, m_denominator{ denominator } {
+Fraction::Fraction(int numerator, int denominator) : m_numerator{ numerator }, m_denominator{ denominator } {
 	assert(m_denominator != 0 && "Fraction's denominator cannot be assigned to 0");
 	reduce();
 }

@@ -1,5 +1,5 @@
 #pragma once
-#include "Fraction.h";
+#include "Fraction.h"
 
 class Complex{
 	Fraction m_real;

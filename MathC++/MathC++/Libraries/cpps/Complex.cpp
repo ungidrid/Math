@@ -1,7 +1,7 @@
 #include "../headers/Complex.h"
 
 //CONSTRUCTORS
-Complex::Complex(Fraction real = 0, Fraction imaginarious = 0) {
+Complex::Complex(Fraction real, Fraction imaginarious) {
 	m_real = real;
 	m_imaginarious = imaginarious;
 }

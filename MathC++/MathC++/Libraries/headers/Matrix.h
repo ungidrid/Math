@@ -2,7 +2,7 @@
 #include <vector>
 #include "LinearEquation.h"
 
-class Matrix
+/*class Matrix
 {
 protected:
 	vector<LinearEquation> vect;
@@ -62,4 +62,4 @@ public:
 	Matrix operator-() { for (auto &elem : vect) { elem = -elem; } return *this; }
 	friend bool operator==(Matrix left, Matrix right) { return left.vect == right.vect; }
 	friend bool operator!=(Matrix left, Matrix right) { return left.vect != right.vect; }
-};
+};*/
