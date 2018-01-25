@@ -1,9 +1,5 @@
 #include "../headers/Fraction.h"
 
-
-
-
-
 //CONSTRUCTORS
 Fraction::Fraction(int numerator, int denominator) : m_numerator{ numerator }, m_denominator{ denominator } {
 	assert(m_denominator != 0 && "Fraction's denominator cannot be assigned to 0");
@@ -20,16 +16,24 @@ void Fraction::reduce() {
 	m_denominator /= cd;
 }
 
-double Fraction::toDouble() {
+ostream& Fraction::print(ostream& out)const{
+	if (m_denominator != 1)
+		out << m_numerator << "/" << m_denominator;
+	else
+		out << m_numerator;
+	return out;
+}
+
+double Fraction::toDouble() const {
 	return static_cast<double>(m_numerator) / m_denominator; 
 }
 
 //OPERATORS
-Fraction Fraction::operator-() {
+Fraction Fraction::operator-() const {
 	return Fraction(-m_numerator, m_denominator); 
 }
-Fraction Fraction::operator+() {
-	return *this; 
+Fraction Fraction::operator+() const {
+	return *this;
 }
 Fraction& Fraction::operator+=(const Fraction& f2) {
 	*this = *this + f2;
@@ -69,17 +73,15 @@ bool operator!=(const Fraction& f1, const Fraction& f2) {
 }
 
 ostream& operator<<(ostream& out, const Fraction& f) {
-	if (f.m_denominator != 1) {
-		out << f.m_numerator << "/" << f.m_denominator;
-		return out;
-	}
-	else
-		out << f.m_numerator; return out;
+	return f.print(out);
 }
 istream& operator>>(istream& in, Fraction& f) {
 	in >> f.m_numerator;
 	char c = in.get();
-	if (c == '\n') { f.m_denominator = 1; return in; }
+	if (c == '\n') { 
+		f.m_denominator = 1; 
+		return in; 
+	}
 	assert(c == '/' && "Unhandled input");
 	in >> f.m_denominator;
 	assert(f.m_denominator != 0 && "Fraction's denominator cannot be assigned to 0");

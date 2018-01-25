@@ -2,28 +2,28 @@
 #include <vector>
 #include "Complex.h"
 
-template<class T>
 class LinearEquation{
 protected:
-	vector<T> valArray;
+	vector<Fraction> valArray;
 public:
-	LinearEquation(int);
-	LinearEquation(const vector<T>&);
-	LinearEquation(const initializer_list<T>&);
+	LinearEquation(size_t);
+	LinearEquation(const vector<Fraction>&);
+	LinearEquation(const initializer_list<Fraction>&);
 
-	vector<T>& getEquation(); //getter hybrid must be splited into getter and setter
-	vector<T> getEquation() const; //getter, non-tested
-	void printEquation() const;
+	vector<Fraction>& getEquation();
+	const vector<Fraction>& getEquation() const;
+	ostream& print(ostream&) const;
 
-	LinearEquation operator+() const;//constness added, not tested
-	LinearEquation operator-() const;//constness added, not tested
-	T& operator[](int index); //getter hybrid must be splited into getter and setter
-	T operator[](int index) const; //getter, non-tested
+	LinearEquation operator+() const;
+	LinearEquation operator-() const;
+	Fraction& operator[](size_t index); 
+	const Fraction& operator[](size_t index) const; 
 
-	friend LinearEquation operator-(const LinearEquation&,const LinearEquation&);//constness added, not tested
-	friend LinearEquation operator+(const LinearEquation&,const LinearEquation&);//constness added, not tested
-	friend bool operator==(const LinearEquation&, const LinearEquation&);//constness added, not tested
-	friend bool operator!=(const LinearEquation&, const LinearEquation&);//constness added, not tested
-	friend LinearEquation operator*(const T&,const LinearEquation&);//constness added, not tested
-	//operator<< could be overloaded too by use of "printEquation" method
+	friend LinearEquation operator-(const LinearEquation&,const LinearEquation&);
+	friend LinearEquation operator+(const LinearEquation&,const LinearEquation&);
+	friend bool operator==(const LinearEquation&, const LinearEquation&);
+	friend bool operator!=(const LinearEquation&, const LinearEquation&);
+	friend LinearEquation operator*(const Fraction&,const LinearEquation&);
+	
+	friend ostream& operator<<(ostream&, const LinearEquation&);
 };

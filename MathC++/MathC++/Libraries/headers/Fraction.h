@@ -12,9 +12,11 @@ class Fraction{
 	void reduce();
 public:
 	Fraction(int = 0, int = 1);
-	double toDouble();
-	Fraction operator-();
-	Fraction operator+();
+
+	ostream& print(ostream&) const;
+	double toDouble() const;
+	Fraction operator-() const;
+	Fraction operator+() const;
 	Fraction& operator+=(const Fraction&);
 	Fraction& operator-=(const Fraction&);
 	Fraction& operator*=(const Fraction&);
