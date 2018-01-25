@@ -6,23 +6,24 @@ class LinearEquation{
 protected:
 	vector<Fraction> valArray;
 public:
-	LinearEquation(int);
+	LinearEquation(size_t);
 	LinearEquation(const vector<Fraction>&);
 	LinearEquation(const initializer_list<Fraction>&);
 
-	vector<Fraction>& getEquation(); //getter hybrid must be splited into getter and setter
-	vector<Fraction> getEquation() const; //getter, non-tested
-	void printEquation() const;
+	vector<Fraction>& getEquation();
+	const vector<Fraction>& getEquation() const;
+	void printEquation() const;	//REDO
 
-	LinearEquation operator+() const;//constness added, not tested
-	LinearEquation operator-() const;//constness added, not tested
-	Fraction& operator[](int index); //getter hybrid must be splited into getter and setter
-	Fraction operator[](int index) const; //getter, non-tested
+	const LinearEquation& operator+() const;
+	LinearEquation& operator+();
+	LinearEquation& operator-();//Ѕлет, в тебе в FRACTION унарний м≥нус створюЇ новий об'Їкт ≥ повертаЇ його, а тут той же унарний м≥нус в тому ж контекст≥ м≥н€Ї сам об'Їкт. ќприд≥лис€, блет. якщо в≥н м≥н€тиме об'Їкт, то його не можна зробити const 
+	Fraction& operator[](size_t index); 
+	const Fraction& operator[](size_t index) const; 
 
-	friend LinearEquation operator-(const LinearEquation&,const LinearEquation&);//constness added, not tested
-	friend LinearEquation operator+(const LinearEquation&,const LinearEquation&);//constness added, not tested
-	friend bool operator==(const LinearEquation&, const LinearEquation&);//constness added, not tested
-	friend bool operator!=(const LinearEquation&, const LinearEquation&);//constness added, not tested
-	friend LinearEquation operator*(const Fraction&,const LinearEquation&);//constness added, not tested
+	friend LinearEquation operator-(const LinearEquation&,const LinearEquation&);
+	friend LinearEquation operator+(const LinearEquation&,const LinearEquation&);
+	friend bool operator==(const LinearEquation&, const LinearEquation&);
+	friend bool operator!=(const LinearEquation&, const LinearEquation&);
+	friend LinearEquation operator*(const Fraction&,const LinearEquation&);
 	//operator<< could be overloaded too by use of "printEquation" method
 };

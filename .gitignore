@@ -1,8 +1,10 @@
 *.exe
 /Debug
+/MathC++/.vs
 <<<<<<< HEAD
 =======
 /.vs
+/MathC++/.vs
 >>>>>>> ungidrid
 /MathC++/.vs
 /MathC++/Debug
@@ -13,6 +15,7 @@
 /MathC++/MathC++/targetver.h
 /MathC++/MathC++.sln
 >>>>>>> Pashka2107
+/MathC++/.vs
 /MathC++/.vs
 /MathC++/Debug
 /.git
