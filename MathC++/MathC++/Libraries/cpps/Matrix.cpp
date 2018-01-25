@@ -16,12 +16,10 @@ Matrix Matrix::E(size_t size){
 size_t Matrix::size() const{ 
 	return vect.size();
 }
-//TEST IT
 ostream& Matrix::print(ostream& out) const{
 	out << '\n';
-	for (const auto &elem : vect){
+	for (const auto &elem : vect)
 		out << elem << '\n';
-	}
 	out << '\n';
 	return out;
 }
@@ -89,9 +87,10 @@ const LinearEquation& Matrix::operator[](size_t index) const {
 	return vect[index];
 }
 Matrix operator*(const Matrix& left, const Fraction& right) {
+	Matrix m{ left };
 	for (size_t i = 0; i < left.size(); ++i)
 		for (size_t j = 0; j < left.vect[0].getEquation().size(); ++j)
-			left[i][j] *= right;
+			m[i][j] *= right;
 	return left;
 }
 Matrix operator*(const Fraction& left, const Matrix& right) {
@@ -120,11 +119,11 @@ Matrix operator*(const Matrix& left, const Matrix& right) {
 Matrix Matrix::operator+()const {
 	return *this;
 }
-
 Matrix Matrix::operator-() const {
-	for (auto elem : vect)
-		elem = -elem;
-	return *this;
+	Matrix temp{ *this };
+	for (size_t i = 0; i < temp.size(); ++i)
+		temp[i] = -temp[i];
+	return temp;
 }
 bool operator==(const Matrix& left, const Matrix& right) {
 	return left.vect == right.vect;

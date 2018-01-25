@@ -23,7 +23,6 @@ ostream& Fraction::print(ostream& out)const{
 		out << m_numerator;
 	return out;
 }
-
 double Fraction::toDouble() const {
 	return static_cast<double>(m_numerator) / m_denominator; 
 }
