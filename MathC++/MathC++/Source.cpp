@@ -2,6 +2,7 @@
 
 int main()
 {
-	cout << Matrix::E(5).power(5);
+	Matrix<Fraction> m{ {1,2,3},{2,3,4},{3,4,5} }, m2{ m };
+	cout << m - m2;
 	system("PAUSE");
 }
