@@ -16,6 +16,11 @@ public:
 	Complex conjugate() const;
 	Complex operator+() const;
 	Complex operator-() const;
+	Complex& operator+=(const Complex&);
+	Complex& operator-=(const Complex&);
+	Complex& operator*=(const Complex&);
+	Complex& operator/=(const Complex&);
+
 	friend Complex operator+(const Complex&, const Complex&);
 	friend Complex operator-(const Complex&, const Complex&);
 	friend Complex operator*(const Complex&, const Complex&);

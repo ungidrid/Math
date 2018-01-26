@@ -2,7 +2,7 @@
 
 int main()
 {
-	Matrix<Fraction> m{ {1,2,3},{2,3,4},{3,4,5} }, m2{ m };
-	cout << m - m2;
+	Matrix<Complex> m{ {Complex(2,1),Complex(1)},{Complex(2,0), Complex(2)} } , m2{ m };
+	cout << m << " " << m.determinant();
 	system("PAUSE");
 }

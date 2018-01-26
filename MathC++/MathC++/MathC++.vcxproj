@@ -123,8 +123,12 @@
   <ItemGroup>
     <ClCompile Include="Libraries\cpps\Complex.cpp" />
     <ClCompile Include="Libraries\cpps\Fraction.cpp" />
-    <ClCompile Include="Libraries\cpps\LinearEquation.cpp" />
-    <ClCompile Include="Libraries\cpps\Matrix.cpp" />
+    <ClCompile Include="Libraries\cpps\LinearEquation.inl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Libraries\cpps\Matrix.inl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

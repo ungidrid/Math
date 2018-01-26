@@ -3,14 +3,6 @@
 //CONSTRUCTORS
 Complex::Complex(const Fraction& real, const Fraction& imaginarious):m_real{real}, m_imaginarious{imaginarious} {}
 
-ostream& Complex::print(ostream& out) const {
-	if (Im() == 0) 
-		return out << Re();
-	if (Re() == 0) 
-		return out << Im();
-	return out << Re() << " + " << Im() <<"*i";
-}
-
 //METHODS
 Fraction& Complex::Re() {
 	return m_real;
@@ -30,6 +22,13 @@ Fraction Complex::squaredAbs() const {
 Complex Complex::conjugate() const {
 	return Complex(Re(), -Im()); 
 }
+ostream& Complex::print(ostream& out) const {
+	if (Im() == 0)
+		return out << Re();
+	if (Re() == 0)
+		return out << Im() << "*i" ;
+	return out << Re() << " + " << Im() << "*i";
+}
 
 //OPERATORS
 Complex Complex::operator+() const {
@@ -38,6 +37,23 @@ Complex Complex::operator+() const {
 Complex Complex::operator-() const {
 	return Complex(-Re(), -Im()); 
 }
+Complex& Complex::operator+=(const Complex& c2) {
+	*this = *this + c2;
+	return *this;
+}
+Complex& Complex::operator-=(const Complex& c2) {
+	*this = *this - c2;
+	return *this;
+}
+Complex& Complex::operator*=(const Complex& c2) {
+	*this = *this * c2;
+	return *this;
+}
+Complex& Complex::operator/=(const Complex& c2) {
+	*this = *this / c2;
+	return *this;
+}
+
 Complex operator+(const Complex& left, const Complex& right) { 
 	return Complex(left.Re() + right.Re(), left.Im() + right.Im()); 
 }
@@ -54,7 +70,6 @@ Complex operator/(const Complex& left, const Complex& right){
 	return c;
 }
 
-//TEST IT
 ostream& operator<<(ostream& out, const Complex& c) {
 	return c.print(out);
 }

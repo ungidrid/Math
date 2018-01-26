@@ -35,13 +35,13 @@
     <ClCompile Include="Libraries\cpps\Fraction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Libraries\cpps\Matrix.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Libraries\cpps\LinearEquation.cpp">
+    <ClCompile Include="Libraries\cpps\LinearEquation.inl">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\cpps\Matrix.inl">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
