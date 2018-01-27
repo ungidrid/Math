@@ -2,7 +2,7 @@
 
 int main()
 {
-	Matrix<Complex> m{ {Complex(2,1),Complex(1)},{Complex(2,0), Complex(2)} } , m2{ m };
-	cout << m << " " << m.determinant();
+	Matrix<double> m{ {1,2,4},{2,3,4},{3,4,5} }, m2{ m };
+	cout << double(2)*m << m.inversed() << m.transposed() << m.power(0);
 	system("PAUSE");
 }

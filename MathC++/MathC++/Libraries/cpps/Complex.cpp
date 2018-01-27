@@ -69,6 +69,12 @@ Complex operator/(const Complex& left, const Complex& right){
 	c.Im() /= right.squaredAbs();
 	return c;
 }
+bool operator==(const Complex& left, const Complex& right) {
+	return (left.Re() == right.Re() && left.Im() == right.Im());
+}
+bool operator!=(const Complex& left, const Complex& right) {
+	return !(left == right);
+}
 
 ostream& operator<<(ostream& out, const Complex& c) {
 	return c.print(out);

@@ -25,6 +25,8 @@ public:
 	friend Complex operator-(const Complex&, const Complex&);
 	friend Complex operator*(const Complex&, const Complex&);
 	friend Complex operator/(const Complex&, const Complex&);
+	friend bool operator==(const Complex&, const Complex&);
+	friend bool operator!=(const Complex&, const Complex&);
 
 	friend ostream& operator<<(ostream&, const Complex&);
 	friend istream& operator>>(istream&, Complex&);
