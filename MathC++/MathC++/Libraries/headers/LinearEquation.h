@@ -23,7 +23,9 @@ public:
 	friend LinearEquation operator+(const LinearEquation&,const LinearEquation&);
 	friend bool operator==(const LinearEquation&, const LinearEquation&);
 	friend bool operator!=(const LinearEquation&, const LinearEquation&);
+	friend bool operator==(const LinearEquation&, int a);
 	friend LinearEquation operator*(const Fraction&,const LinearEquation&);
+	friend LinearEquation operator*(const LinearEquation&, const Fraction&);
 	
 	friend ostream& operator<<(ostream&, const LinearEquation&);
 };

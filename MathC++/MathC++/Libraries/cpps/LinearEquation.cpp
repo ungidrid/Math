@@ -49,8 +49,22 @@ LinearEquation operator*(const Fraction& left, const LinearEquation& right){
 		eq[i] = left * right[i]; 
 	return eq;
 }
+
+LinearEquation operator*(const LinearEquation& right, const Fraction& left) {
+	LinearEquation eq(right.getEquation().size());
+	for (size_t i = 0; i < right.getEquation().size(); ++i)
+		eq[i] = left * right[i];
+	return eq;
+}
 bool operator==(const LinearEquation& left, const LinearEquation& right) {
 	return left.valArray == right.valArray; 
+}
+bool operator==(const LinearEquation& l, int a) {
+	for (size_t i = 0; i < l.getEquation().size(); ++i) {
+		if (l[i] != a)
+			return false;
+	}
+	return true;
 }
 bool operator!=(const LinearEquation& left, const LinearEquation& right) {
 	return !(left.valArray == right.valArray); 

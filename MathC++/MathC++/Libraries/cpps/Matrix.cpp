@@ -79,6 +79,34 @@ Matrix Matrix::power(int deg) const{
 		result = result * m;
 	return result;
 }
+size_t Matrix::rows()const {
+	return vect.size();
+}
+size_t  Matrix::cols()const {
+	return vect[0].getEquation().size();
+}
+size_t  Matrix::rank()const {
+	Matrix mat;
+	if (this->cols() > this->rows())
+		mat = this->transposed();
+	else
+		mat = *this;
+	for (size_t i = 0; i < mat.cols(); ++i)
+		for (size_t j = 0; j < mat.rows(); ++j) {
+			if (i >= j)
+				continue;
+			mat[j] = mat[i] * mat[j][i] - mat[j] * mat[i][i];
+		}
+
+	size_t rank = 0;
+	for (size_t i = 0; i < mat.rows(); ++i) {
+		if (mat[i] == 0)
+			continue;
+		else
+			++rank;
+	}
+	return rank;
+}
 
 LinearEquation& Matrix::operator[](size_t index) {
 	return vect[index];
