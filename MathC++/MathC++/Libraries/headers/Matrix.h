@@ -26,10 +26,10 @@ public:
 
 	LinearEquation<T>& operator[](size_t);
 	const LinearEquation<T>& operator[](size_t)const;
-	template<class T,class F>
-	friend Matrix<F> operator*(const Matrix<F>&, const T&);
-	template<class T, class F>
-	friend Matrix<F> operator*(const T&, const Matrix<F>&);
+	template<class S,class F>
+	friend Matrix<F> operator*(const Matrix<F>&, const S&);
+	template<class S, class F>
+	friend Matrix<F> operator*(const S&, const Matrix<F>&);
 	template<class F>
 	friend Matrix<F> operator+(const Matrix<F>&, const Matrix<F>&);
 	template<class F>

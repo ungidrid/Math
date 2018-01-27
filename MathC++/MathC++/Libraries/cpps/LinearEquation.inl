@@ -58,12 +58,17 @@ for (auto& elem : temp)
 elem = -elem;
 return temp;
 }
-template<class T, class F>
-LinearEquation<F> operator*(const T& left, const LinearEquation<F>& right) {
+template<class S, class F>
+LinearEquation<F> operator*(const S& left, const LinearEquation<F>& right) {
 LinearEquation<F> eq(right.size());
 for (size_t i = 0; i < right.size(); ++i)
 eq[i] = left * right[i];
 return eq;
+}
+template<class S, class F>
+LinearEquation<F> operator*(const LinearEquation<F>& left, const S& right)
+{
+	return right * left;
 }
 template<class T>
 bool operator==(const LinearEquation<T>& left, const LinearEquation<T>& right) {

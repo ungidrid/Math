@@ -98,16 +98,16 @@ size_t Matrix<T>::rank() const {
 		for (size_t j = 0; j < mat.rows(); ++j) {
 			if (i >= j)
 				continue;
-			//mat[j] = mat[i] * mat[j][i] - mat[j] * mat[i][i];
+			mat[j] = mat[i] * mat[j][i] - mat[j] * mat[i][i];
 		}
 
 	size_t rank = 0;
-	/*for (size_t i = 0; i < mat.rows(); ++i) {
-		if (mat[i] == vector<T>(mat[i].getEquation().size(), static_cast<T>(0)))
+	for (size_t i = 0; i < mat.rows(); ++i) {
+		if (mat[i] == LinearEquation<T>(vector<T>(mat[i].size(), static_cast<T>(0))))
 			continue;
 		else
 			++rank;
-	}*/
+	}
 	return rank;
 }
 
@@ -120,16 +120,16 @@ template<class T>
 const LinearEquation<T>& Matrix<T>::operator[](size_t index) const {
 	return vect[index];
 }
-template<class T, class F>
-Matrix<F> operator*(const Matrix<F>& left, const T& right) {
+template<class S, class F>
+Matrix<F> operator*(const Matrix<F>& left, const S& right) {
 	Matrix<F> m{ left };
 	for (size_t i = 0; i < left.rows(); ++i)
 		for (size_t j = 0; j < left.cols(); ++j)
 			m[i][j] *= right;
 	return m;
 }
-template<class T, class F>
-Matrix<F> operator*(const T& left, const Matrix<F>& right){
+template<class S, class F>
+Matrix<F> operator*(const S& left, const Matrix<F>& right){
 	return right * left;
 }
 template<class T>
