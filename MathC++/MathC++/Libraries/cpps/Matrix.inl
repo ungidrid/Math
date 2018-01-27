@@ -87,6 +87,33 @@ Matrix<T> Matrix<T>::power(int deg) const {
 		result = result * m;
 	return result;
 }
+template<class T>
+size_t Matrix<T>::rows() const {
+	return vect.size();
+}
+template<class T>
+size_t Matrix<T>::cols() const {
+	return vect[0].getEquation().size();
+}
+template<class T>
+size_t Matrix<T>::rank() const {
+	Matrix mat = ( (this->cols() > this->rows()) ? this->transposed() : *this);
+	for (size_t i = 0; i < mat.cols(); ++i)
+		for (size_t j = 0; j < mat.rows(); ++j) {
+			if (i >= j)
+				continue;
+			mat[j] = mat[i] * mat[j][i] - mat[j] * mat[i][i];
+		}
+
+	size_t rank = 0;
+	for (size_t i = 0; i < mat.rows(); ++i) {
+		if (mat[i] == vector<T>(mat[i].getEquation().size(), static_cast<T>(0)))
+			continue;
+		else
+			++rank;
+	}
+	return rank;
+}
 
 //OPERATORS
 template<class T>
@@ -97,18 +124,16 @@ template<class T>
 const LinearEquation<T>& Matrix<T>::operator[](size_t index) const {
 	return vect[index];
 }
-template<class F>
-//redefinition from T to F makes no sense, but it isn't working in other way
-Matrix<F> operator*(const Matrix<F>& left, const F& right) {
+template<class T, class F>
+Matrix<F> operator*(const Matrix<F>& left, const T& right) {
 	Matrix<F> m{ left };
 	for (size_t i = 0; i < left.size(); ++i)
 		for (size_t j = 0; j < left.vect[0].getEquation().size(); ++j)
 			m[i][j] *= right;
 	return m;
 }
-template<class F>
-//redefinition from T to F makes no sense, but it isn't working in other way
-Matrix<F> operator*(const F& left, const Matrix<F>& right)
+template<class T, class F>
+Matrix<F> operator*(const T& left, const Matrix<F>& right)
 {
 	return right * left;
 }

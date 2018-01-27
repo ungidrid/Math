@@ -28,8 +28,9 @@ public:
 	friend bool operator==(const LinearEquation<F>&, const LinearEquation<F>&);
 	template<class F>
 	friend bool operator!=(const LinearEquation<F>&, const LinearEquation<F>&);
-	template<class F>
-	friend LinearEquation<F> operator*(const F&,const LinearEquation<F>&);
+	//friend bool operator==(const LinearEquation&, int a);
+	template<class T, class F>
+	friend LinearEquation<F> operator*(const T&,const LinearEquation<F>&);
 	
 	template<class F>
 	friend ostream& operator<<(ostream& out, const LinearEquation<F>& le);

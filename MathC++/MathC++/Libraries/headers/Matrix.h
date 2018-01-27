@@ -21,13 +21,16 @@ public:
 	Matrix<T> power(int) const;
 	Matrix<T> operator+() const;
 	Matrix<T> operator-() const;
+	size_t rows() const; 
+	size_t cols() const;
+	size_t rank() const;
 
 	LinearEquation<T>& operator[](size_t);
 	const LinearEquation<T>& operator[](size_t)const;
-	template<class F>
-	friend Matrix<F> operator*(const Matrix<F>&, const F&);
-	template<class F>
-	friend Matrix<F> operator*(const F&, const Matrix<F>&);
+	template<class T,class F>
+	friend Matrix<F> operator*(const Matrix<F>&, const T&);
+	template<class T, class F>
+	friend Matrix<F> operator*(const T&, const Matrix<F>&);
 	template<class F>
 	friend Matrix<F> operator+(const Matrix<F>&, const Matrix<F>&);
 	template<class F>

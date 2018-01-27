@@ -53,10 +53,9 @@ for (auto& elem : temp)
 elem = -elem;
 return temp;
 }
-template<class F>
-//redefinition from T to F makes no sense, but it isn't working in other way
-LinearEquation<F> operator*(const F& left, const LinearEquation<F>& right) {
-LinearEquation<T> eq(right.getEquation().size());
+template<class T, class F>
+LinearEquation<F> operator*(const T& left, const LinearEquation<F>& right) {
+LinearEquation<F> eq(right.getEquation().size());
 for (size_t i = 0; i < right.getEquation().size(); ++i)
 eq[i] = left * right[i];
 return eq;
@@ -65,6 +64,14 @@ template<class T>
 bool operator==(const LinearEquation<T>& left, const LinearEquation<T>& right) {
 return left.valArray == right.valArray;
 }
+//template<class T>
+//bool operator==(const LinearEquation<T>& l, int a) {
+//	for (size_t i = 0; i < l.getEquation().size(); ++i) {
+//		if (l[i] != a)
+//			return false;
+//	}
+//	return true;
+//}
 template<class T>
 bool operator!=(const LinearEquation<T>& left, const LinearEquation<T>& right) {
 return !(left.valArray == right.valArray);
