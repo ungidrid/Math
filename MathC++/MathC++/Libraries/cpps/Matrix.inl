@@ -16,10 +16,6 @@ Matrix<T> Matrix<T>::E(size_t size) {
 	return e;
 }
 template<class T>
-size_t Matrix<T>::size() const {
-	return vect.size();
-}
-template<class T>
 ostream& Matrix<T>::print(ostream& out) const {
 	out << '\n';
 	for (const auto &elem : vect)
@@ -29,50 +25,50 @@ ostream& Matrix<T>::print(ostream& out) const {
 }
 template<class T>
 T Matrix<T>::determinant() const {
-	assert(vect.size() == vect[0].getEquation().size() && "Matrix has no determinant since it is not squared!"); //assertation added
-	if (vect.size() == 1)
+	assert(rows() == cols() && "Matrix has no determinant since it is not squared!"); 
+	if (rows() == 1)
 		return vect[0][0];
 	T det = static_cast<T>(0);
-	for (size_t i = 0; i < vect.size(); ++i) {
-		Matrix<T> newmatrix(vector<LinearEquation<T>>(vect.size() - 1, vect.size() - 1));
-		for (size_t j = 0; j < vect.size(); ++j) {
+	for (size_t i = 0; i < rows(); ++i) {
+		Matrix<T> newmatrix(vector<LinearEquation<T>>(rows() - 1, rows() - 1));
+		for (size_t j = 0; j < rows(); ++j) {
 			if (i == j)
 				continue;
-			for (size_t k = 0; k < vect.size() - 1; ++k)
+			for (size_t k = 0; k < rows() - 1; ++k)
 				newmatrix[k][j - (j > i)] = vect[k + 1][j];
 		}
 		if (i % 2 == 0)
 			det += vect[0][i] * newmatrix.determinant();
 		else
-			det -= vect[0][i] * newmatrix.determinant(); // else if -> else
+			det -= vect[0][i] * newmatrix.determinant(); 
 	}
 	return det;
 }
 template<class T>
 Matrix<T> Matrix<T>::transposed() const {
-	assert(vect[0].getEquation().size() != 0 && vect.size() != 0 && "Matrix could not be transposed!"); //assertation added
-	Matrix<T> m(vector<LinearEquation<T>>(vect[0].getEquation().size(), LinearEquation<T>(vect.size())));
-	for (size_t i = 0; i < vect.size(); ++i)
-		for (size_t j = 0; j < vect[0].getEquation().size(); ++j)
+	assert(cols() != 0 && rows() != 0 && "Matrix could not be transposed!"); 
+	Matrix<T> m(vector<LinearEquation<T>>(cols(), LinearEquation<T>(rows())));
+	for (size_t i = 0; i < rows(); ++i)
+		for (size_t j = 0; j < cols(); ++j)
 			m[j][i] = vect[i][j];
 	return m;
 }
 template<class T>
 Matrix<T> Matrix<T>::inversed() const {
-	assert(determinant() != static_cast<T>(0) && "Inversed matrix does not exist!");//assertation added
-	Matrix<T> m_inversed(vector<LinearEquation<T>>(this->size(), LinearEquation<T>(this->size())));
-	for (size_t row = 0; row < this->size(); ++row)
-		for (size_t col = 0; col < this->size(); ++col) {
-			Matrix<T> minor(vector<LinearEquation<T>>(this->size() - 1, LinearEquation<T>(this->size() - 1)));
-			for (size_t i = 0; i < this->size(); ++i)
-				for (size_t j = 0; j < this->size(); ++j) {
+	assert(determinant() != static_cast<T>(0) && "Inversed matrix does not exist!");
+	Matrix<T> m_inversed(vector<LinearEquation<T>>(rows(), LinearEquation<T>(rows())));
+	for (size_t row = 0; row < rows(); ++row)
+		for (size_t col = 0; col < cols(); ++col) {
+			Matrix<T> minor(vector<LinearEquation<T>>(rows() - 1, LinearEquation<T>(rows() - 1)));
+			for (size_t i = 0; i < rows(); ++i)
+				for (size_t j = 0; j < rows(); ++j) {
 					if (i == row || j == col)
 						continue;
-					minor[i - (i > row)][j - (j > col)] = this->vect[i][j];
+					minor[i - (i > row)][j - (j > col)] = vect[i][j];
 				}
 			m_inversed[row][col] = T(static_cast<int>(pow(-1, row + col)))*minor.determinant();
 		}
-	return m_inversed.transposed() * (static_cast<T>(1) / this->determinant());
+	return m_inversed.transposed() * (static_cast<T>(1) / determinant());
 }
 template<class T>
 Matrix<T> Matrix<T>::power(int deg) const {
@@ -97,21 +93,21 @@ size_t Matrix<T>::cols() const {
 }
 template<class T>
 size_t Matrix<T>::rank() const {
-	Matrix mat = ( (this->cols() > this->rows()) ? this->transposed() : *this);
+	Matrix<T> mat{ ((cols() > rows()) ? transposed() : *this) };
 	for (size_t i = 0; i < mat.cols(); ++i)
 		for (size_t j = 0; j < mat.rows(); ++j) {
 			if (i >= j)
 				continue;
-			mat[j] = mat[i] * mat[j][i] - mat[j] * mat[i][i];
+			//mat[j] = mat[i] * mat[j][i] - mat[j] * mat[i][i];
 		}
 
 	size_t rank = 0;
-	for (size_t i = 0; i < mat.rows(); ++i) {
+	/*for (size_t i = 0; i < mat.rows(); ++i) {
 		if (mat[i] == vector<T>(mat[i].getEquation().size(), static_cast<T>(0)))
 			continue;
 		else
 			++rank;
-	}
+	}*/
 	return rank;
 }
 
@@ -127,21 +123,20 @@ const LinearEquation<T>& Matrix<T>::operator[](size_t index) const {
 template<class T, class F>
 Matrix<F> operator*(const Matrix<F>& left, const T& right) {
 	Matrix<F> m{ left };
-	for (size_t i = 0; i < left.size(); ++i)
-		for (size_t j = 0; j < left.vect[0].getEquation().size(); ++j)
+	for (size_t i = 0; i < left.rows(); ++i)
+		for (size_t j = 0; j < left.cols(); ++j)
 			m[i][j] *= right;
 	return m;
 }
 template<class T, class F>
-Matrix<F> operator*(const T& left, const Matrix<F>& right)
-{
+Matrix<F> operator*(const T& left, const Matrix<F>& right){
 	return right * left;
 }
 template<class T>
 Matrix<T> operator+(const Matrix<T>& left, const Matrix<T>& right) {
-	assert(left.size() == right.size() && left.vect[0].getEquation().size() == right.vect[0].getEquation().size() && "Matrices could not be added!"); // assertation added
-	Matrix<T> m(vector<LinearEquation<T>>(left.size(), LinearEquation<T>(left.size())));
-	for (size_t i = 0; i < left.size(); ++i)
+	assert(left.rows() == right.rows() && left.cols() == right.cols() && "Matrices could not be added!"); 
+	Matrix<T> m(vector<LinearEquation<T>>(left.rows(), LinearEquation<T>(left.rows())));
+	for (size_t i = 0; i < left.rows(); ++i)
 		m[i] = left[i] + right[i];
 	return m;
 }
@@ -151,11 +146,11 @@ Matrix<T> operator-(const Matrix<T>& left, const Matrix<T>& right) {
 }
 template<class T>
 Matrix<T> operator*(const Matrix<T>& left, const Matrix<T>& right) {
-	assert(left.vect[0].getEquation().size() == right.size() && "Matrices could not be multiplicated!");//assertation added
-	Matrix<T> m(vector<LinearEquation<T>>(left.size(), LinearEquation<T>(right.vect[0].getEquation().size())));
-	for (size_t i = 0; i < left.size(); ++i)
-		for (size_t j = 0; j < right.vect[0].getEquation().size(); ++j)
-			for (size_t k = 0; k < right.size(); ++k)
+	assert(left.cols() == right.rows() && "Matrices could not be multiplicated!");
+	Matrix<T> m(vector<LinearEquation<T>>(left.rows(), LinearEquation<T>(right.cols())));
+	for (size_t i = 0; i < left.rows(); ++i)
+		for (size_t j = 0; j < right.cols(); ++j)
+			for (size_t k = 0; k < right.rows(); ++k)
 				m[i][j] += left[i][k] * right[k][j];
 	return m;
 }
@@ -166,7 +161,7 @@ Matrix<T> Matrix<T>::operator+() const {
 template<class T>
 Matrix<T> Matrix<T>::operator-() const {
 	Matrix<T> temp{ *this };
-	for (size_t i = 0; i < temp.size(); ++i)
+	for (size_t i = 0; i < temp.rows(); ++i)
 		temp[i] = -temp[i];
 	return temp;
 }

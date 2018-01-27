@@ -13,7 +13,6 @@ public:
 	//IDENTITY MATRIX
 	static Matrix<T> E(size_t);
 
-	size_t size() const;
 	virtual ostream& print(ostream&) const;
 	T determinant() const;
 	Matrix<T> transposed() const;

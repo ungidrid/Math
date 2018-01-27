@@ -13,6 +13,7 @@ public:
 
 	vector<T>& getEquation();
 	const vector<T>& getEquation() const;
+	size_t size() const;
 	ostream& print(ostream&) const;
 
 	LinearEquation<T> operator+() const;
@@ -28,7 +29,6 @@ public:
 	friend bool operator==(const LinearEquation<F>&, const LinearEquation<F>&);
 	template<class F>
 	friend bool operator!=(const LinearEquation<F>&, const LinearEquation<F>&);
-	//friend bool operator==(const LinearEquation&, int a);
 	template<class T, class F>
 	friend LinearEquation<F> operator*(const T&,const LinearEquation<F>&);
 	

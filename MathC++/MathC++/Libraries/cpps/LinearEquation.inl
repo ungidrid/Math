@@ -16,6 +16,10 @@ const vector<T>& LinearEquation<T>::getEquation() const {
 return valArray;
 }
 template<class T>
+size_t LinearEquation<T>::size() const{
+	return valArray.size();
+}
+template<class T>
 ostream& LinearEquation<T>::print(ostream& out) const {
 for (const auto &elem : valArray)
 out << elem << " ";
@@ -25,8 +29,9 @@ return out;
 //OPERATORS
 template<class T>
 LinearEquation<T> operator+(const LinearEquation<T>& left, const LinearEquation<T>& right) {
-LinearEquation<T> eq(left.valArray.size());
-for (size_t i = 0; i < left.valArray.size(); ++i)
+assert(left.size() == right.size() && "Linear combinations with different lengths could not be added!");
+LinearEquation<T> eq(left.size());
+for (size_t i = 0; i < left.size(); ++i)
 eq[i] = left[i] + right[i];
 return eq;
 }
@@ -55,8 +60,8 @@ return temp;
 }
 template<class T, class F>
 LinearEquation<F> operator*(const T& left, const LinearEquation<F>& right) {
-LinearEquation<F> eq(right.getEquation().size());
-for (size_t i = 0; i < right.getEquation().size(); ++i)
+LinearEquation<F> eq(right.size());
+for (size_t i = 0; i < right.size(); ++i)
 eq[i] = left * right[i];
 return eq;
 }
@@ -64,14 +69,6 @@ template<class T>
 bool operator==(const LinearEquation<T>& left, const LinearEquation<T>& right) {
 return left.valArray == right.valArray;
 }
-//template<class T>
-//bool operator==(const LinearEquation<T>& l, int a) {
-//	for (size_t i = 0; i < l.getEquation().size(); ++i) {
-//		if (l[i] != a)
-//			return false;
-//	}
-//	return true;
-//}
 template<class T>
 bool operator!=(const LinearEquation<T>& left, const LinearEquation<T>& right) {
 return !(left.valArray == right.valArray);
