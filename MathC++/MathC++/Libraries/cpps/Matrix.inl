@@ -93,20 +93,35 @@ size_t Matrix<T>::cols() const {
 }
 template<class T>
 size_t Matrix<T>::rank() const {
-	Matrix<T> mat{ ((cols() > rows()) ? transposed() : *this) };
+	/*Matrix<T> mat{ ((cols() > rows()) ? transposed() : *this) };
 	for (size_t i = 0; i < mat.cols(); ++i)
-		for (size_t j = 0; j < mat.rows(); ++j) {
-			if (i >= j)
-				continue;
-			mat[j] = mat[i] * mat[j][i] - mat[j] * mat[i][i];
-		}
+		for (size_t j = 0; j < mat.rows(); ++j)
+			if (i < j)
+				mat[j] = mat[i] * mat[j][i] - mat[j] * mat[i][i];
 
 	size_t rank = 0;
 	for (size_t i = 0; i < mat.rows(); ++i) {
-		if (mat[i] == LinearEquation<T>(vector<T>(mat[i].size(), static_cast<T>(0))))
-			continue;
-		else
+		if (mat[i] != LinearEquation<T>(vector<T>(mat[i].size(), static_cast<T>(0))))
 			++rank;
+	}
+	return rank;*/
+	Matrix<T> m{ *this };
+	size_t rank = 0;
+	for (size_t col = 0; col < cols(); ++col)
+	{
+		size_t row = col;
+		if (rank == cols() || rank == rows()) break;
+		for (; row < rows(); ++row)
+			if (m[row][col] != static_cast<T>(0)) 
+			{ 
+				++rank;
+				LinearEquation<T> temp = m[row];
+				m[row] = m[col];
+				m[col] = temp;
+				for (size_t i = col + 1; i < rows(); ++i)
+					m[i] = m[i] - (m[i][col] / m[col][col])*m[col];
+				break;
+			}
 	}
 	return rank;
 }
