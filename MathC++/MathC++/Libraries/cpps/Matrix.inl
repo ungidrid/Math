@@ -10,9 +10,9 @@ Matrix<T>::Matrix(const initializer_list<LinearEquation<T>>& list) : vect{ list 
 template<class T>
 Matrix<T> Matrix<T>::E(size_t size) {
 	Matrix e(vector<LinearEquation<T>>(size, LinearEquation<T>(size)));
-	for (size_t i = 0; i < size; i++)
-		for (size_t j = 0; j < size; j++)
-			if (i == j)e[i][j] = static_cast<T>(1);
+	for (size_t i = 0; i < size; ++i)
+		for (size_t j = 0; j < size; ++j)
+			if (i == j) e[i][j] = static_cast<T>(1);
 	return e;
 }
 template<class T>
@@ -93,18 +93,6 @@ size_t Matrix<T>::cols() const {
 }
 template<class T>
 size_t Matrix<T>::rank() const {
-	/*Matrix<T> mat{ ((cols() > rows()) ? transposed() : *this) };
-	for (size_t i = 0; i < mat.cols(); ++i)
-		for (size_t j = 0; j < mat.rows(); ++j)
-			if (i < j)
-				mat[j] = mat[i] * mat[j][i] - mat[j] * mat[i][i];
-
-	size_t rank = 0;
-	for (size_t i = 0; i < mat.rows(); ++i) {
-		if (mat[i] != LinearEquation<T>(vector<T>(mat[i].size(), static_cast<T>(0))))
-			++rank;
-	}
-	return rank;*/
 	Matrix<T> m{ *this };
 	size_t rank = 0;
 	for (size_t col = 0; col < cols(); ++col)
@@ -129,10 +117,12 @@ size_t Matrix<T>::rank() const {
 //OPERATORS
 template<class T>
 LinearEquation<T>& Matrix<T>::operator[](size_t index) {
+	assert(index >= 0 && index < rows() && "Index out of range!");
 	return vect[index];
 }
 template<class T>
 const LinearEquation<T>& Matrix<T>::operator[](size_t index) const {
+	assert(index >= 0 && index < rows() && "Index out of range!");
 	return vect[index];
 }
 template<class S, class F>
@@ -186,7 +176,7 @@ bool operator==(const Matrix<T>& left, const Matrix<T>& right) {
 }
 template<class T>
 bool operator!=(const Matrix<T>& left, const Matrix<T>& right) {
-	return !(left.vect == right.vect);
+	return !(left == right);
 }
 template<class T>
 ostream& operator<<(ostream& out, const Matrix<T>& m) {

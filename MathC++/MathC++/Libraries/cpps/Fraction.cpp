@@ -55,7 +55,7 @@ Fraction operator+(const Fraction& f1, const Fraction& f2) {
 	return Fraction(f1.m_numerator*f2.m_denominator + f1.m_denominator * f2.m_numerator, f1.m_denominator*f2.m_denominator);
 }
 Fraction operator-(const Fraction& f1, const Fraction& f2) {
-	return Fraction(f1.m_numerator*f2.m_denominator - f1.m_denominator * f2.m_numerator, f1.m_denominator*f2.m_denominator);
+	return f1 + -f2;
 }
 Fraction operator*(const Fraction& f1, const Fraction& f2){
 	return Fraction(f1.m_numerator*f2.m_numerator, f1.m_denominator*f2.m_denominator);
