@@ -1,4 +1,8 @@
 #include "../headers/Complex.h"
+using namespace std;
+#include <iostream>
+#include <string>
+#include <sstream>
 
 //CONSTRUCTORS
 Complex::Complex(const Fraction& real, const Fraction& imaginarious):m_real{real}, m_imaginarious{imaginarious} {}
@@ -80,9 +84,20 @@ ostream& operator<<(ostream& out, const Complex& c) {
 	return c.print(out);
 }
 istream& operator>>(istream& in, Complex& c) {
-	in >> c.Re();
-	//char s = in.get();
-	//if (s == '\n') { c.Im() = 0; return in; }
-	in >> c.Im();
+	string temp;
+	getline(in, temp);
+
+	size_t s_index = temp.find_first_of("1234567890");
+	size_t e_index = temp.find_first_of(",");
+	string temp1(temp, s_index, e_index - s_index);
+	stringstream s(temp1);
+	s >> c.m_real;
+	s.clear();
+
+	s_index = temp.find_first_of("0123456789", e_index);
+	e_index = temp.find_first_of(")", e_index);
+	temp1.assign(temp, s_index, e_index - s_index);
+	s.str(temp1);
+	s >> c.m_imaginarious;
 	return in;
 }
