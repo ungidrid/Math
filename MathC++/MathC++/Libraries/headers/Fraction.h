@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 #include <cassert>
+#include <stdexcept>
+#include <exception>
 using namespace std;
 
 class Fraction{

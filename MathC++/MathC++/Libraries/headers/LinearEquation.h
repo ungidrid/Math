@@ -11,8 +11,6 @@ public:
 	LinearEquation(const vector<T>&);
 	LinearEquation(const initializer_list<T>&);
 
-	vector<T>& getEquation();
-	const vector<T>& getEquation() const;
 	size_t size() const;
 	ostream& print(ostream&) const;
 

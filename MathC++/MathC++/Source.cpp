@@ -2,7 +2,14 @@
 
 int main()
 {
-	Matrix<Fraction> m{ {0,1,2},{1,3,0},{0,3,2} };
-	cout << "m: " << m.rows() << "x" << m.cols() << '\n' << m << "Rank: " << m.rank() << '\n';
+	Matrix<Fraction> m{ {1,2},{3,6} };
+	try 
+	{
+		cout << m.inversed();
+	}
+	catch (exception& exception)
+	{
+		cout << "Error occured: " << exception.what() << '\n';
+	}
 	system("PAUSE");
 }

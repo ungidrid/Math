@@ -2,7 +2,8 @@
 
 //CONSTRUCTORS
 Fraction::Fraction(int numerator, int denominator) : m_numerator{ numerator }, m_denominator{ denominator } {
-	assert(m_denominator != 0 && "Fraction's denominator cannot be assigned to 0");
+	if (m_denominator == 0)
+		throw runtime_error("Fraction's denominator cannot be assigned to 0!");
 	reduce();
 }
 
@@ -61,7 +62,8 @@ Fraction operator*(const Fraction& f1, const Fraction& f2){
 	return Fraction(f1.m_numerator*f2.m_numerator, f1.m_denominator*f2.m_denominator);
 }
 Fraction operator/(const Fraction& f1, const Fraction& f2){
-	assert(f2.m_numerator != 0 && "Division by 0");
+	if (f2.m_numerator == 0) 
+		throw runtime_error("Division by 0");
 	return Fraction(f1.m_numerator*f2.m_denominator, f1.m_denominator*f2.m_numerator);
 }
 bool operator==(const Fraction& f1, const Fraction& f2) {
@@ -81,9 +83,11 @@ istream& operator>>(istream& in, Fraction& f) {
 		f.m_denominator = 1; 
 		return in; 
 	}
-	assert(c == '/' && "Unhandled input");
+	if (c != '/') 
+		throw runtime_error("Unhandled input");
 	in >> f.m_denominator;
-	assert(f.m_denominator != 0 && "Fraction's denominator cannot be assigned to 0");
+	if (f.m_denominator == 0) 
+		throw runtime_error("Fraction's denominator cannot be assigned to 0");
 	f.reduce();
 	return in;
 }

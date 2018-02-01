@@ -8,14 +8,6 @@ LinearEquation<T>::LinearEquation(const initializer_list<T>& list) : valArray{ l
 
 //METHODS
 template<class T>
-vector<T>& LinearEquation<T>::getEquation() {
-	return valArray;
-}
-template<class T>
-const vector<T>& LinearEquation<T>::getEquation() const {
-	return valArray;
-}
-template<class T>
 size_t LinearEquation<T>::size() const{
 	return valArray.size();
 }
@@ -29,7 +21,8 @@ ostream& LinearEquation<T>::print(ostream& out) const {
 //OPERATORS
 template<class T>
 LinearEquation<T> operator+(const LinearEquation<T>& left, const LinearEquation<T>& right) {
-	assert(left.size() == right.size() && "Linear combinations with different lengths could not be added!");
+	if (left.size() != right.size())
+		throw runtime_error ("Linear combinations with different lengths could not be added!");
 	LinearEquation<T> eq(left.size());
 	for (size_t i = 0; i < left.size(); ++i)
 		eq[i] = left[i] + right[i];
@@ -41,12 +34,14 @@ LinearEquation<T> operator-(const LinearEquation<T>& left, const LinearEquation<
 }
 template<class T>
 T& LinearEquation<T>::operator[](size_t index) {
-	assert(index >= 0 && index < size() && "Index out of range!");
+	if (!(index >= 0 && index < size()))
+		throw runtime_error ("Index out of range!");
 	return valArray[index];
 }
 template<class T>
 const T& LinearEquation<T>::operator[](size_t index) const {
-	assert(index >= 0 && index < size() && "Index out of range!");
+	if (!(index >= 0 && index < size()))
+		throw runtime_error ("Index out of range!");
 	return valArray[index];
 }
 template<class T>
