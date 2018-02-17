@@ -42,20 +42,16 @@ Complex Complex::operator-() const {
 	return Complex(-Re(), -Im()); 
 }
 Complex& Complex::operator+=(const Complex& c2) {
-	*this = *this + c2;
-	return *this;
+	return *this = *this + c2;
 }
 Complex& Complex::operator-=(const Complex& c2) {
-	*this = *this - c2;
-	return *this;
+	return *this = *this - c2;
 }
 Complex& Complex::operator*=(const Complex& c2) {
-	*this = *this * c2;
-	return *this;
+	return *this = *this * c2;
 }
 Complex& Complex::operator/=(const Complex& c2) {
-	*this = *this / c2;
-	return *this;
+	return *this = *this / c2;
 }
 
 Complex operator+(const Complex& left, const Complex& right) { 

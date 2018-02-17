@@ -9,8 +9,6 @@ Matrix<T>::Matrix(const initializer_list<LinearEquation<T>>& list) : vect{ list 
 //METHODS
 template<class T>
 Matrix<T> Matrix<T>::E(size_t size) {
-	if (size < 0)
-		throw runtime_error ("Matrix must have non-negative size!");
 	if (size == 0)
 		return Matrix<T>();
 	Matrix e(vector<LinearEquation<T>>(size, LinearEquation<T>(size)));

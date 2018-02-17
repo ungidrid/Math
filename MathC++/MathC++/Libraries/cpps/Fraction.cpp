@@ -36,20 +36,16 @@ Fraction Fraction::operator+() const {
 	return *this;
 }
 Fraction& Fraction::operator+=(const Fraction& f2) {
-	*this = *this + f2;
-	return *this;
+	return *this = *this + f2;
 }
 Fraction& Fraction::operator-=(const Fraction& f2) {
-	*this = *this - f2;
-	return *this;
+	return *this = *this - f2;
 }
 Fraction& Fraction::operator*=(const Fraction& f2) {
-	*this = *this * f2;
-	return *this;
+	return *this = *this * f2;
 }
 Fraction& Fraction::operator/=(const Fraction& f2) {
-	*this = *this / f2;
-	return *this;
+	return *this = *this / f2;
 }
 
 Fraction operator+(const Fraction& f1, const Fraction& f2) {
